@@ -7,7 +7,8 @@ st.title("Data App Assignment - Shlok Yeolekar")
 
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
-#st.dataframe(df)
+
+# Removed non grouped bar graph because it was redundant and not a good visualization
 
 # Now let's do the same graph where we do the aggregation first in Pandas... (this results in a chart with solid bars)
 st.dataframe(df.groupby("Category").sum())
@@ -25,6 +26,10 @@ st.dataframe(sales_by_month)
 
 # Here the grouped months are the index and automatically used for the x axis
 st.line_chart(sales_by_month, y="Sales")
+
+#### My edits ####
+sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
+
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
