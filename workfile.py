@@ -29,15 +29,14 @@ st.line_chart(sales_by_month, y="Sales")
 
 #### My edits ####
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
-sel_cat = st.selectbox("Select a category:", df["Sub_Category"].unique())
 subcat_options = None
 match sel_cat:
     case "Furniture":
-        subcat_options = []
+        subcat_options = ["Bookcases, Chairs", "Tables", "Furnishings"]
     case "Office Supplies":
-        subcat_options = []
+        subcat_options = ["Labels", "Storage", "Art", "Binders", "Appliances", "Paper", "Envelopes", "Fasteners", "Supplies"]
     case "Technology":
-        subcat_options = []
+        subcat_options = ["Phones", "Accessories", "Machines", "Copiers"]
 
 sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", subcat_options)
 
