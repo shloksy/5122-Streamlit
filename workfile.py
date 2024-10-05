@@ -48,6 +48,7 @@ if sel_subcat:
     filt_df = df[df['Sub_Category'].isin(sel_subcat)]
     sales_by_month = filt_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
     st.line_chart(sales_by_month, y="Sales")
+else st.write("Please select a subcategory")
 
 #4
 total_sales = filt_df['Sales'].sum()
