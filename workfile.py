@@ -28,7 +28,9 @@ st.dataframe(sales_by_month)
 st.line_chart(sales_by_month, y="Sales")
 
 #### My edits ####
+#1
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
+# 2
 subcat_options = None
 match sel_cat:
     case "Furniture":
