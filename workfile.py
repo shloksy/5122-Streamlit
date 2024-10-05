@@ -7,7 +7,7 @@ st.title("Data App Assignment - Shlok Yeolekar")
 
 st.write("### Input Data and Examples")
 df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
-st.dataframe(df)
+#st.dataframe(df)
 
 # Now let's do the same graph where we do the aggregation first in Pandas... (this results in a chart with solid bars)
 st.dataframe(df.groupby("Category").sum())
