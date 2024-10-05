@@ -51,13 +51,16 @@ if sel_subcat:
 else: st.write("Please select a subcategory")
 
 #4
-total_sales = filt_df['Sales'].sum()
-total_profit = filt_df['Profit'].sum()
-overall_profit_margin = (total_profit/total_sales) * 100 if total_sales > 0 else 0
-col1, col2, col3 = st.columns(3)
-col1.metric("Total Sales", f"${total_sales:,.2f}")
-col2.metric("Total Profit", f"${total_profit:,.2f}")
-col3.metric("Overall Profit Margin", f"{overall_profit_margin:.2f}%")
+try:
+    total_sales = filt_df['Sales'].sum()
+    total_profit = filt_df['Profit'].sum()
+    overall_profit_margin = (total_profit/total_sales) * 100 if total_sales > 0 else 0
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Total Sales", f"${total_sales:,.2f}")
+    col2.metric("Total Profit", f"${total_profit:,.2f}")
+    col3.metric("Overall Profit Margin", f"{overall_profit_margin:.2f}%")
+except Exception:
+    st.write()
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
