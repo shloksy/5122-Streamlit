@@ -34,7 +34,7 @@ sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Tec
 subcat_options = None
 match sel_cat:
     case "Furniture":
-        subcat_options = ["Bookcases, Chairs", "Tables", "Furnishings"]
+        subcat_options = ["Bookcases", "Chairs", "Tables", "Furnishings"]
     case "Office Supplies":
         subcat_options = ["Labels", "Storage", "Art", "Binders", "Appliances", "Paper", "Envelopes", "Fasteners", "Supplies"]
     case "Technology":
