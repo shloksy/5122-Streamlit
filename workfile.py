@@ -28,7 +28,7 @@ st.dataframe(sales_by_month)
 st.line_chart(sales_by_month, y="Sales")
 
 #### My edits ####
-#1
+# 1
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
 
 # 2
@@ -43,22 +43,29 @@ match sel_cat:
 
 sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", subcat_options)
 
-#3
+# 3
 if sel_subcat:
     filt_df = df[df['Sub_Category'].isin(sel_subcat)]
     sales_by_month = filt_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
     st.line_chart(sales_by_month, y="Sales")
 else: st.write(":red[Please select a subcategory to see charts.]")
 
-#4
+# 4 & 5
 try:
     total_sales = filt_df['Sales'].sum()
     total_profit = filt_df['Profit'].sum()
     overall_profit_margin = (total_profit/total_sales) * 100 if total_sales > 0 else 0
+
+    total_sales_all = df['Sales'].sum()
+    total_profit_all = df['Profit'].sum()
+    overall_profit_margin_all = (total_profit_all / total_sales_all) * 100 if total_sales_all > 0 else 0
+
+    opm_delta = overall_profit_margin - overall_profit_margin_all
+    
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Sales", f"${total_sales:,.2f}")
     col2.metric("Total Profit", f"${total_profit:,.2f}")
-    col3.metric("Overall Profit Margin", f"{overall_profit_margin:.2f}%")
+    col3.metric("Overall Profit Margin", f"{overall_profit_margin:.2f}%", delta=f"{opm_delta:.2f}%")
 except Exception:
     st.write()
 
