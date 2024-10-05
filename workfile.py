@@ -45,13 +45,8 @@ sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", subcat_opti
 
 #3
 if sel_subcat:
-    filt_df = df[df['Subcategory'].isin(sel_subcat)]  # Assuming 'Subcategory' is a column in your df
-    
-    # Step 5: Aggregate sales by month for the filtered DataFrame
+    filt_df = df[df['Sub_Category'].isin(sel_subcat)]
     sales_by_month = filt_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
-
-    # Step 6: Display the sales data and line chart
-    st.dataframe(sales_by_month)
     st.line_chart(sales_by_month, y="Sales")
 
 st.write("## Your additions")
