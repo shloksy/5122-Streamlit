@@ -29,7 +29,7 @@ st.line_chart(sales_by_month, y="Sales")
 
 #### My edits ####
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
-if states != []:
+if sel_cat != []:
     sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", df[df["Category"].isin(sel_cat)]["Sub_Category"].unique())
 
 st.write("## Your additions")
