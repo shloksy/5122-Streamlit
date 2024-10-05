@@ -30,6 +30,7 @@ st.line_chart(sales_by_month, y="Sales")
 #### My edits ####
 #1
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
+
 # 2
 subcat_options = None
 match sel_cat:
@@ -41,6 +42,17 @@ match sel_cat:
         subcat_options = ["Phones", "Accessories", "Machines", "Copiers"]
 
 sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", subcat_options)
+
+#3
+if sel_subcat:
+    filt_df = df[df['Subcategory'].isin(sel_subcat)]  # Assuming 'Subcategory' is a column in your df
+    
+    # Step 5: Aggregate sales by month for the filtered DataFrame
+    sales_by_month = filt_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
+
+    # Step 6: Display the sales data and line chart
+    st.dataframe(sales_by_month)
+    st.line_chart(sales_by_month, y="Sales")
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
