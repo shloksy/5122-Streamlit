@@ -84,7 +84,7 @@ if selected_sub_categories:
     st.line_chart(sales_chart, x='Order_Date', y='Sales')
 
     # Calculate metrics
-    total_sales = filtered_df['Sales'].sum()S
+    total_sales = filtered_df['Sales'].sum()
     total_profit = filtered_df['Profit'].sum()
     overall_profit_margin = total_profit / total_sales * 100
 
