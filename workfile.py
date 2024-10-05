@@ -29,8 +29,17 @@ st.line_chart(sales_by_month, y="Sales")
 
 #### My edits ####
 sel_cat = st.selectbox("Select a category:", ("Furniture","Office Supplies","Technology"))
-if sel_cat != []:
-    sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", df[df["Category"].isin(sel_cat)]["Sub_Category"].unique())
+sel_cat = st.selectbox("Select a category:", df["Sub_Category"].unique())
+subcat_options = None
+match sel_cat:
+    case "Furniture":
+        subcat_options = []
+    case "Office Supplies":
+        subcat_options = []
+    case "Technology":
+        subcat_options = []
+
+sel_subcat = st.multiselect(f"Select a subcategory from {sel_cat}:", subcat_options)
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
